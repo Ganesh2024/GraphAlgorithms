@@ -10,7 +10,7 @@ vector<int> bfsOfGraph(int v, vector<int> adj[]) {
     vector<int> bfs;
     int vis[v]={0};
     queue<int> q;
-    q.push(0);
+    q.push(0); //starting node
     vis[0]=1;
     while(q.size()){
         int p = q.front();
