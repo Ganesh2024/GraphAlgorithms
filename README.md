@@ -4,7 +4,7 @@
 
 #### 1.1) BFS
 
-```c++:
+```C++
 vector<int> bfsOfGraph(int v, vector<int> adj[]) {
     // Code here
     vector<int> bfs;
