@@ -3,6 +3,31 @@
 ### 1) Graph Traversals
 
 #### 1.1) BFS
+
+```
+vector<int> bfsOfGraph(int v, vector<int> adj[]) {
+    // Code here
+    vector<int> bfs;
+    int vis[v]={0};
+    queue<int> q;
+    q.push(0);
+    vis[0]=1;
+    while(q.size()){
+        int p = q.front();
+        bfs.push_back(p);
+        q.pop();
+        for(auto it:adj[p]){
+            if(!vis[it]){
+                vis[it]=1;
+                q.push(it);
+            }
+        }
+    }
+    return bfs;
+}
+
+```
+
 #### 1.2) DFS
 #### 1.3) Cycle Detection of Undirected Graph Using BFS
 #### 1.4) Cycle Detection of Undirected Graph Using DFS
