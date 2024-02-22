@@ -164,6 +164,11 @@ vector<int> topoSort(int v, vector<int> adj[]){
 }
 ```
 #### 2.3) Cycle Detection of Directed Graph using TopoSort
+```
+if number of vertices == topol.size()
+    return 0; //no cycle
+return 1 //cycle detected
+```
 
 ### 3) Shortest Path Algorithms
 
