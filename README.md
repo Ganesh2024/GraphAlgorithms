@@ -29,6 +29,29 @@ vector<int> bfsOfGraph(int v, vector<int> adj[]) {
 ```
 
 #### 1.2) DFS
+```C++
+
+typedef vector<int> vi;
+vi dfsv;
+
+void dfs(int pnode,vi& vis,vi adj[]){
+    vis[pnode]=1;
+    dfsv.push_back(pnode);
+    for(auto it:adj[pnode]){
+        if(!vis[it])dfs(it,vis,adj);
+    }
+}
+
+vector<int> dfsOfGraph(int v, vector<int> adj[]) {
+    // Code here
+    vi vis(v,0);
+    for(int i=0;i<v;i++){ //to traverse connected components also
+        if(!vis[i])dfs(i,vis,adj);
+    }
+    return dfsv;
+}
+```
+
 #### 1.3) Cycle Detection of Undirected Graph Using BFS
 #### 1.4) Cycle Detection of Undirected Graph Using DFS
 
