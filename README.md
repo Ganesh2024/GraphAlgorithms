@@ -137,6 +137,32 @@ vector<int> topoSort(int v, vector<int> adj[]){
 
 ```
 #### 2.2) Topological Sort using BFS(Khan's Algorithm)
+```C++
+typedef vector<int> vi;
+vi topol;
+
+vector<int> topoSort(int v, vector<int> adj[]){
+    vi inDegree(v,0);
+    for(int i=0;i<v;i++){
+        for(auto it:adj[i])inDegree[it]++;
+    }
+    queue<int> q;
+    for(int i=0;i<v;i++){
+        if(inDegree[i]==0)q.push(i);
+    }
+    while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        topol.push_back(node);
+        for(auto it:adj[node]){
+            inDegree[it]--;
+            if(inDegree[it]==0)q.push(it);
+        }
+    }
+    
+    return topol;
+}
+```
 #### 2.3) Cycle Detection of Directed Graph using TopoSort
 
 ### 3) Shortest Path Algorithms
