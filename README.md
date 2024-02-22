@@ -30,7 +30,6 @@ vector<int> bfsOfGraph(int v, vector<int> adj[]) {
 
 #### 1.2) DFS
 ```C++
-
 typedef vector<int> vi;
 vi dfsv;
 
@@ -54,9 +53,6 @@ vector<int> dfsOfGraph(int v, vector<int> adj[]) {
 
 #### 1.3) Cycle Detection of Undirected Graph Using BFS
 ```C++
-#include <bits/stdc++.h> 
-using namespace std; 
-
 typedef vector<int> vi;
 typedef pair<int,int> pii;
 
@@ -90,6 +86,26 @@ bool isCycle(int v, vector<int> adj[]) {
 ```
 
 #### 1.4) Cycle Detection of Undirected Graph Using DFS
+```C++
+typedef vector<int> vi;
+bool dfs(int i,vi& vis,vi adj[]){
+    vis[i]=1;
+    for(auto it:adj[i]){
+        if(!vis[it] and dfs(it,vis,adj))return 1;
+        else if(it!=i)return 1;
+    }
+    return 0;
+}
+
+bool isCycle(int v, vector<int> adj[]) {
+    // Code here
+    vi vis(v,0);
+    for(int i=0;i<v;i++){
+        if(!vis[i] and dfs(i,vis,adj))return 1;
+    }
+    return 0;
+}
+```
 
 ### 2) TopoSort
 
