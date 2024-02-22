@@ -1,4 +1,4 @@
-# GraphAlgos
+# Graph Algorithms
 
 ### 1) Graph Traversals
 
@@ -110,6 +110,32 @@ bool isCycle(int v, vector<int> adj[]) {
 ### 2) TopoSort
 
 #### 2.1) Topological Sort using DFS
+```C++
+typedef vector<int> vi;
+vi topol;
+stack<int>  st;
+
+void dfs(int i,vi& vis,vi adj[]){
+    vis[i]=1;
+    for(auto it:adj[i]){
+        if(!vis[it])dfs(it,vis,adj);
+    }
+    st.push(i);
+}
+
+vector<int> topoSort(int v, vector<int> adj[]){
+    vi vis(v,0);
+    for(int i=0;i<v;i++){
+        if(!vis[i])dfs(i,vis,adj);
+    }
+    while(!st.empty()){
+        topol.push_back(st.top());
+        st.pop();
+    }
+    return topol;
+}
+
+```
 #### 2.2) Topological Sort using BFS(Khan's Algorithm)
 #### 2.3) Cycle Detection of Directed Graph using TopoSort
 
