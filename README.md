@@ -173,6 +173,38 @@ return 1 //cycle detected
 ### 3) Shortest Path Algorithms
 
 #### 3.1) Dijkstra
+```C++
+typedef pair<int,int> pii;
+typedef vector<int> vi;
+vector <int> dijkstra(int v, vector<vector<int>> adj[], int s)
+{
+    // Code here
+    set<pii> st;
+    vi dist(v,1e9);
+    st.insert({0,s});
+    dist[s]=0;
+    while(!st.empty()){
+        auto it = *(st.begin());
+        int pnode = it.second;
+        int d = it.first;
+        st.erase(it);
+        
+        if(dist[s]<d)continue;
+        for(auto it:adj[pnode]){
+            
+            if(d+it[1]<dist[it[0]]){
+                if(dist[it[0]]!=1e9){
+                    st.erase({dist[it[0]],it[0]});
+                }
+                dist[it[0]] = d+it[1];
+                st.insert({dist[it[0]],it[1]});
+            }
+            
+        }
+    }
+    return dist;
+}
+```
 #### 3.2) Bellman-Ford
 #### 3.3) Floyd-Warshall
 
